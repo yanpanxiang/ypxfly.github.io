@@ -17,6 +17,9 @@
 		h1{
 			color: #fff;
 		}
+		h2{
+			color: red;
+		}
 	</style>
 </head>
 <body>
@@ -24,6 +27,32 @@
 		<h1>
 			Opps~The host is too lazy to leave anything!
 		</h1>
+		<h2 id="date">
+			
+		</h2>
 	</div>
+
+
+
+	<script type="text/javascript">
+		function getTheTime() {
+			var t = new Date() - new Date(2012,8,15);
+			var d = Math.floor(t/1000/60/60/24);
+			t -= d*1000*60*60*24;
+			var h = Math.floor(t/1000/60/60);
+			t -= h*1000*60*60;
+			var m = Math.floor(t/1000/60);
+			t -= m*1000*60;
+			var s = Math.floor(t/1000);
+			return d + '天' + h + '小时' + m + '分钟' + s + '秒';
+		}
+		window.onload = function () {
+			var date = document.getElementById('date');
+			date.innerHTML = getTheTime()
+			setInterval(function () {
+				date.innerHTML = getTheTime()
+			},1000)
+		}
+	</script>
 </body>
 </html>
